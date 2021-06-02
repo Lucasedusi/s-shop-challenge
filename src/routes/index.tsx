@@ -7,7 +7,7 @@ import ProductPurchase from '../pages/ProductPurchase';
 const Routes: React.FC = () => {
   return (
     <Switch>
-      <Route path="/" component={ProductAdmin} />
+      <Route path="/" exact component={ProductAdmin} />
       <Route path="/purchase" component={ProductPurchase} />
     </Switch>
   );

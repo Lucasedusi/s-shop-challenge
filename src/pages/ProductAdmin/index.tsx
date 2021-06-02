@@ -1,13 +1,19 @@
 import React from 'react';
 
-import { Container, Content, Title } from './styles';
+import { Container, ContentPrimary, ContentSecond, Title } from './styles';
 
 const ProductAdmin: React.FC = () => {
   return (
     <Container>
-      <Content>
+      <ContentPrimary>
         <Title>Produtos</Title>
-      </Content>
+        <button className="btn btn-success">Adicionar Produto</button>
+      </ContentPrimary>
+
+      <ContentSecond>
+        <Title>Produtos</Title>
+        <button className="btn btn-primary">Adicionar Produto</button>
+      </ContentSecond>
     </Container>
   );
 };
