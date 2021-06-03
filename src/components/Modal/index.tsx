@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import ReactModal from 'react-modal';
 
-interface IFoodPlate {
+interface IProducts {
   id: number;
   name: string;
   price: string;
