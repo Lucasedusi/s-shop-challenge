@@ -7,7 +7,6 @@ import { Container } from './styles';
 interface IFoodPlate {
   id: number;
   name: string;
-  image: string;
   price: string;
   description: string;
   available: boolean;
@@ -19,7 +18,11 @@ interface IProps {
   handleEditFood: (food: IFoodPlate) => void;
 }
 
-const Food: React.FC<IProps> = ({ food, handleDelete, handleEditFood }: IProps) => {
+const Food: React.FC<IProps> = ({
+  food,
+  handleDelete,
+  handleEditFood,
+}: IProps) => {
   const [isAvailable, setIsAvailable] = useState(food.available);
 
   async function toggleAvailable(): Promise<void> {
@@ -33,7 +36,6 @@ const Food: React.FC<IProps> = ({ food, handleDelete, handleEditFood }: IProps) 
   return (
     <Container available={isAvailable}>
       <header>
-        <img src={food.image} alt={food.name} />
       </header>
       <section className="body">
         <h2>{food.name}</h2>
@@ -44,7 +46,12 @@ const Food: React.FC<IProps> = ({ food, handleDelete, handleEditFood }: IProps) 
       </section>
       <section className="footer">
         <div className="icon-container">
-          <button type="button" className="icon" onClick={() => setEditingFood()} data-testid={`edit-food-${food.id}`}>
+          <button
+            type="button"
+            className="icon"
+            onClick={() => setEditingFood()}
+            data-testid={`edit-food-${food.id}`}
+          >
             <FiEdit3 size={20} />
           </button>
 
