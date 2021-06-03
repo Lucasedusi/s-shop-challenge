@@ -4,7 +4,7 @@ import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import { Container } from './styles';
 
-interface IFoodPlate {
+interface IProduct {
   id: number;
   name: string;
   price: string;
@@ -13,24 +13,24 @@ interface IFoodPlate {
 }
 
 interface IProps {
-  food: IFoodPlate;
+  product: IProduct;
   handleDelete: (id: number) => {};
-  handleEditFood: (food: IFoodPlate) => void;
+  handleEditProduct: (product: IProduct) => void;
 }
 
-const Food: React.FC<IProps> = ({
-  food,
+const Product: React.FC<IProps> = ({
+  product,
   handleDelete,
-  handleEditFood,
+  handleEditProduct,
 }: IProps) => {
-  const [isAvailable, setIsAvailable] = useState(food.available);
+  const [isAvailable, setIsAvailable] = useState(product.available);
 
   async function toggleAvailable(): Promise<void> {
     // TODO UPDATE STATUS (available)
   }
 
-  function setEditingFood(): void {
-    // TODO - SET THE ID OF THE CURRENT ITEM TO THE EDITING FOOD AND OPEN MODAL
+  function setEditingProduct(): void {
+    // TODO - SET THE ID OF THE CURRENT ITEM TO THE EDITING PRODUCT AND OPEN MODAL
   }
 
   return (
@@ -38,10 +38,10 @@ const Food: React.FC<IProps> = ({
       <header>
       </header>
       <section className="body">
-        <h2>{food.name}</h2>
-        <p>{food.description}</p>
+        <h2>{product.name}</h2>
+        <p>{product.description}</p>
         <p className="price">
-          R$ <b>{food.price}</b>
+          R$ <b>{product.price}</b>
         </p>
       </section>
       <section className="footer">
@@ -49,8 +49,8 @@ const Food: React.FC<IProps> = ({
           <button
             type="button"
             className="icon"
-            onClick={() => setEditingFood()}
-            data-testid={`edit-food-${food.id}`}
+            onClick={() => setEditingProduct()}
+            data-testid={`edit-product-${product.id}`}
           >
             <FiEdit3 size={20} />
           </button>
@@ -58,8 +58,8 @@ const Food: React.FC<IProps> = ({
           <button
             type="button"
             className="icon"
-            onClick={() => handleDelete(food.id)}
-            data-testid={`remove-food-${food.id}`}
+            onClick={() => handleDelete(product.id)}
+            data-testid={`remove-product-${product.id}`}
           >
             <FiTrash size={20} />
           </button>
@@ -68,13 +68,13 @@ const Food: React.FC<IProps> = ({
         <div className="availability-container">
           <p>{isAvailable ? 'Disponível' : 'Indisponível'}</p>
 
-          <label htmlFor={`available-switch-${food.id}`} className="switch">
+          <label htmlFor={`available-switch-${product.id}`} className="switch">
             <input
-              id={`available-switch-${food.id}`}
+              id={`available-switch-${product.id}`}
               type="checkbox"
               checked={isAvailable}
               onChange={toggleAvailable}
-              data-testid={`change-status-food-${food.id}`}
+              data-testid={`change-status-product-${product.id}`}
             />
             <span className="slider" />
           </label>
@@ -84,4 +84,4 @@ const Food: React.FC<IProps> = ({
   );
 };
 
-export default Food;
+export default Product;
