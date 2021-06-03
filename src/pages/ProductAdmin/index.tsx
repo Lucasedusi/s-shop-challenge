@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, ContentPrimary, ContentSecond, Title } from './styles';
+import { Container, ContentPrimary, Title } from './styles';
 
 const ProductAdmin: React.FC = () => {
   return (
@@ -9,11 +9,6 @@ const ProductAdmin: React.FC = () => {
         <Title>Produtos</Title>
         <button className="btn btn-success">Adicionar Produto</button>
       </ContentPrimary>
-
-      <ContentSecond>
-        <Title>Produtos</Title>
-        <button className="btn btn-primary">Adicionar Produto</button>
-      </ContentSecond>
     </Container>
   );
 };
