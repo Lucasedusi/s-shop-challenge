@@ -11,7 +11,7 @@ import ModalEditProduct from '../../components/ModalEditProduct';
 import { Container, ContentPrimary, Title } from './styles';
 
 interface IProduct {
-  id: string;
+  id: number;
   nome: string;
   price: string;
   description: string;
@@ -22,7 +22,7 @@ const ProductAdmin: React.FC = () => {
   const [product, setProduct] = useState<IProduct[]>([]);
   const [editingProduct, setEditingProduct] = useState<IProduct[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editingModalOpen, setEditingModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
 
   useEffect(() => {
     async function loadProducts(): Promise<void> {}
@@ -37,13 +37,29 @@ const ProductAdmin: React.FC = () => {
     }
   }
 
+  async function handleUpdateProduct(product: Omit<IProduct, 'id' | 'availeble'>): Promise<void> {}
+
+  async function handleDeleteProduct(id: number): Promise<void> {}
+
+  function toggleModal(): void {
+    setModalOpen(!modalOpen);
+  }
+
+  function toggleEditModal(): void {
+    setEditModalOpen(!editModalOpen);
+  }
+
+  function handleEditModal(product: IProduct): void {}
+
   return (
-    <Container>
-      <ContentPrimary>
-        <Title>Produtos</Title>
-        <button className="btn btn-success">Adicionar Produto</button>
-      </ContentPrimary>
-    </Container>
+    <>
+      <Container>
+        <ContentPrimary>
+          <Title>Produtos</Title>
+          <button className="btn btn-success">Adicionar Produto</button>
+        </ContentPrimary>
+      </Container>
+    </>
   );
 };
 
