@@ -7,7 +7,7 @@ import { Form } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
 
-interface IProduct {
+interface IProducts {
   id: number;
   name: string;
   price: string;
@@ -18,8 +18,8 @@ interface IProduct {
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleUpdateProduct: (product: Omit<IProduct, 'id' | 'available'>) => void;
-  editingProduct: IProduct;
+  handleUpdateProduct: (product: Omit<IProducts, 'id' | 'available'>) => void;
+  editingProduct: IProducts;
 }
 
 interface IEditProductData {
@@ -53,7 +53,7 @@ const ModalEditProduct: React.FC<IModalProps> = ({
         <Input name="description" placeholder="Descrição" />
 
         <button type="submit" data-testid="edit-product-button">
-          <div className="text">Editar Prato</div>
+          <div className="text">Editar Produto</div>
           <div className="icon">
             <FiCheckSquare size={24} />
           </div>

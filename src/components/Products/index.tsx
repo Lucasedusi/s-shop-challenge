@@ -4,7 +4,7 @@ import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import { Container } from './styles';
 
-interface IProduct {
+interface IProducts {
   id: number;
   name: string;
   price: string;
@@ -13,9 +13,9 @@ interface IProduct {
 }
 
 interface IProps {
-  product: IProduct;
+  product: IProducts;
   handleDelete: (id: number) => {};
-  handleEditProduct: (product: IProduct) => void;
+  handleEditProduct: (product: IProducts) => void;
 }
 
 const Product: React.FC<IProps> = ({

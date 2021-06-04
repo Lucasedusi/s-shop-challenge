@@ -5,18 +5,12 @@ interface IProduct {
 }
 
 export const Container = styled.div<IProduct>`
-  background: #f0f0f5;
+  background: #fff;
   border-radius: 8px;
+  margin-top: 10px;
 
   header {
-    background: #4a6097;
-    border-radius: 8px 8px 0px 0px;
-    height: 192px;
-    overflow: hidden;
-    transition: 0.3s opacity;
-    text-align: center;
-
-    ${props =>
+    ${(props) =>
       !props.available &&
       css`
         opacity: 0.3;

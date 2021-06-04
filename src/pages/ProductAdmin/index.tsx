@@ -4,40 +4,44 @@ import Header from '../../components/Header';
 
 import api from '../../services/api';
 
-import Modal from '../../components/Modal';
+import Product from '../../components/Products';
 import ModalAddProduct from '../../components/ModalAddProduct';
 import ModalEditProduct from '../../components/ModalEditProduct';
 
-import { Container, ContentPrimary, Title } from './styles';
+import { ProductsContainer } from './styles';
 
-interface IProduct {
+interface IProducts {
   id: number;
-  nome: string;
+  name: string;
   price: string;
   description: string;
-  available: string;
+  available: boolean;
 }
 
 const ProductAdmin: React.FC = () => {
-  const [product, setProduct] = useState<IProduct[]>([]);
-  const [editingProduct, setEditingProduct] = useState<IProduct[]>([]);
+  const [products, setProducts] = useState<IProducts[]>([]);
+  const [editingProduct, setEditingProduct] = useState<IProducts>({} as IProducts);
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
   useEffect(() => {
-    async function loadProducts(): Promise<void> {}
+    async function loadProducts(): Promise<void> {
+      const response = await api.get('/products');
+
+      setProducts(response.data);
+    }
 
     loadProducts();
   }, []);
 
-  async function handleAddProduct(product: Omit<IProduct, 'id' | 'available'>): Promise<void> {
+  async function handleAddProduct(product: Omit<IProducts, 'id' | 'available'>): Promise<void> {
     try {
     } catch (err) {
       console.log(err);
     }
   }
 
-  async function handleUpdateProduct(product: Omit<IProduct, 'id' | 'availeble'>): Promise<void> {}
+  async function handleUpdateProduct(product: Omit<IProducts, 'id' | 'available'>): Promise<void> {}
 
   async function handleDeleteProduct(id: number): Promise<void> {}
 
@@ -49,16 +53,29 @@ const ProductAdmin: React.FC = () => {
     setEditModalOpen(!editModalOpen);
   }
 
-  function handleEditModal(product: IProduct): void {}
+  function handleEditProduct(product: IProducts): void {}
 
   return (
     <>
-      <Container>
-        <ContentPrimary>
-          <Title>Produtos</Title>
-          <button className="btn btn-success">Adicionar Produto</button>
-        </ContentPrimary>
-      </Container>
+      <Header openModal={toggleModal} />
+      <ModalAddProduct isOpen={modalOpen} setIsOpen={toggleModal} handleAddProduct={handleAddProduct} />
+      <ModalEditProduct
+        isOpen={editModalOpen}
+        setIsOpen={toggleEditModal}
+        editingProduct={editingProduct}
+        handleUpdateProduct={handleUpdateProduct}
+      />
+      <ProductsContainer data-testid="foods-list">
+        {products &&
+          products.map((product) => (
+            <Product
+              key={product.id}
+              product={product}
+              handleDelete={handleDeleteProduct}
+              handleEditProduct={handleEditProduct}
+            />
+          ))}
+      </ProductsContainer>
     </>
   );
 };
