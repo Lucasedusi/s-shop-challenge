@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Camisa Jeans",
+      "description": "Camisa Jeans Simples",
+      "price": "19.90",
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "Camiseta Branca",
+      "description": "Camiseta totalmente branca.",
+      "price": "51.90",
+      "available": true
+    },
+    {
+      "id": 3,
+      "name": "Calça Sarja",
+      "description": "Calça Sarja, nas cores azul marinho",
+      "price": "25.90",
+      "available": true
+    }
+  ]
+}
