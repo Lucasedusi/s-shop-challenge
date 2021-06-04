@@ -28,17 +28,14 @@ interface IEditProductData {
   description: string;
 }
 
-const ModalEditProduct: React.FC<IModalProps> = ({
-  isOpen,
-  setIsOpen,
-  editingProduct,
-  handleUpdateProduct,
-}) => {
+const ModalEditProduct: React.FC<IModalProps> = ({ isOpen, setIsOpen, editingProduct, handleUpdateProduct }) => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
     async (data: IEditProductData) => {
-      // EDIT A PRODUCT PLATE AND CLOSE THE MODAL
+      handleUpdateProduct(data);
+
+      setIsOpen();
     },
     [handleUpdateProduct, setIsOpen],
   );

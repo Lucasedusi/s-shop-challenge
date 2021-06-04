@@ -36,14 +36,39 @@ const ProductAdmin: React.FC = () => {
 
   async function handleAddProduct(product: Omit<IProducts, 'id' | 'available'>): Promise<void> {
     try {
+      const response = await api.post('/products', {
+        ...product,
+        available: true,
+      });
+
+      setProducts([...products, response.data]);
     } catch (err) {
       console.log(err);
     }
   }
 
-  async function handleUpdateProduct(product: Omit<IProducts, 'id' | 'available'>): Promise<void> {}
+  async function handleUpdateProduct(product: Omit<IProducts, 'id' | 'available'>): Promise<void> {
+    try {
+      const response = await api.put(`/products/${editingProduct.id}`, {
+        ...editingProduct,
+        ...product,
+      });
 
-  async function handleDeleteProduct(id: number): Promise<void> {}
+      setProducts(
+        products.map((mappedProduct) =>
+          mappedProduct.id === editingProduct.id ? { ...response.data } : mappedProduct,
+        ),
+      );
+    } catch (err) {}
+  }
+
+  async function handleDeleteProduct(id: number): Promise<void> {
+    try {
+      await api.delete(`/products/${id}`);
+
+      setProducts(products.filter((product) => product.id !== id));
+    } catch (err) {}
+  }
 
   function toggleModal(): void {
     setModalOpen(!modalOpen);
@@ -53,7 +78,10 @@ const ProductAdmin: React.FC = () => {
     setEditModalOpen(!editModalOpen);
   }
 
-  function handleEditProduct(product: IProducts): void {}
+  function handleEditProduct(product: IProducts): void {
+    setEditingProduct(product);
+    toggleEditModal();
+  }
 
   return (
     <>

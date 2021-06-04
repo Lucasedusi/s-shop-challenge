@@ -105,7 +105,7 @@ export const Container = styled.div<IProduct>`
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: #4a6097;
+          background-color: #bb2124;
           -webkit-transition: 0.4s;
           transition: 0.4s;
           border-radius: 16px;

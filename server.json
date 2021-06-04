@@ -5,21 +5,21 @@
       "name": "Camisa Jeans",
       "description": "Camisa Jeans Simples",
       "price": "19.90",
-      "available": true
-    },
-    {
-      "id": 2,
-      "name": "Camiseta Branca",
-      "description": "Camiseta totalmente branca.",
-      "price": "51.90",
-      "available": true
+      "available": false
     },
     {
       "id": 3,
-      "name": "Calça Sarja",
+      "name": "Cordão de ouro",
       "description": "Calça Sarja, nas cores azul marinho",
-      "price": "25.90",
+      "price": "1.000",
       "available": true
+    },
+    {
+      "name": "Anel de Prata",
+      "price": "10.90",
+      "description": "Teste de anel",
+      "available": true,
+      "id": 4
     }
   ]
 }
