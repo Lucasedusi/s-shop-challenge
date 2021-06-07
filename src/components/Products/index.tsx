@@ -27,7 +27,6 @@ const Product: React.FC<IProps> = ({ product, handleDelete, handleEditProduct }:
 
   return (
     <Container>
-      <header></header>
       <section className="body">
         <h2>{product.name}</h2>
         <p>{product.description}</p>

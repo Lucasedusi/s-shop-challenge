@@ -4,13 +4,6 @@ export const Container = styled.div`
   background: #fff;
   border-radius: 8px;
 
-  header {
-    img {
-      pointer-events: none;
-      user-select: none;
-    }
-  }
-
   section.body {
     padding: 30px;
 
