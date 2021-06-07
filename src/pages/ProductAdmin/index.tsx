@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Header from '../../components/Header';
 
@@ -7,8 +8,9 @@ import api from '../../services/api';
 import Product from '../../components/Products';
 import ModalAddProduct from '../../components/ModalAddProduct';
 import ModalEditProduct from '../../components/ModalEditProduct';
+import SideBarAdmin from '../../components/SiderBarAdmin';
 
-import { ProductsContainer } from './styles';
+import { ProductsContainer, GeneralContainer } from './styles';
 
 interface IProducts {
   id: number;
@@ -91,17 +93,22 @@ const ProductAdmin: React.FC = () => {
         editingProduct={editingProduct}
         handleUpdateProduct={handleUpdateProduct}
       />
-      <ProductsContainer data-testid="foods-list">
-        {products &&
-          products.map((product) => (
-            <Product
-              key={product.id}
-              product={product}
-              handleDelete={handleDeleteProduct}
-              handleEditProduct={handleEditProduct}
-            />
-          ))}
-      </ProductsContainer>
+
+      <GeneralContainer>
+        <SideBarAdmin />
+
+        <ProductsContainer data-testid="foods-list">
+          {products &&
+            products.map((product) => (
+              <Product
+                key={product.id}
+                product={product}
+                handleDelete={handleDeleteProduct}
+                handleEditProduct={handleEditProduct}
+              />
+            ))}
+        </ProductsContainer>
+      </GeneralContainer>
     </>
   );
 };
