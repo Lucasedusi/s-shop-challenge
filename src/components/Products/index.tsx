@@ -11,7 +11,6 @@ interface IProducts {
   name: string;
   price: string;
   description: string;
-  available: boolean;
 }
 
 interface IProps {
@@ -21,28 +20,13 @@ interface IProps {
 }
 
 const Product: React.FC<IProps> = ({ product, handleDelete, handleEditProduct }: IProps) => {
-  const [isAvailable, setIsAvailable] = useState(true);
-
-  async function toggleAvailable(): Promise<void> {
-    try {
-      await api.put(`/products/${product.id}`, {
-        ...product,
-        available: !isAvailable,
-      });
-
-      setIsAvailable(!isAvailable);
-    } catch (err) {
-      console.log();
-    }
-  }
-
   function setEditingProduct(): void {
     handleEditProduct(product);
     console.log(product);
   }
 
   return (
-    <Container available={isAvailable}>
+    <Container>
       <header></header>
       <section className="body">
         <h2>{product.name}</h2>

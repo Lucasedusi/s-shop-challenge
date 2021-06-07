@@ -1,21 +1,11 @@
 import styled, { css } from 'styled-components';
 
-interface IProduct {
-  available: boolean;
-}
-
-export const Container = styled.div<IProduct>`
+export const Container = styled.div`
   background: #fff;
   border-radius: 8px;
   margin-top: 10px;
 
   header {
-    ${(props) =>
-      !props.available &&
-      css`
-        opacity: 0.3;
-      `};
-
     img {
       pointer-events: none;
       user-select: none;

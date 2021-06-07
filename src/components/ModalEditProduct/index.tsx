@@ -12,13 +12,12 @@ interface IProducts {
   name: string;
   price: string;
   description: string;
-  available: boolean;
 }
 
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleUpdateProduct: (product: Omit<IProducts, 'id' | 'available'>) => void;
+  handleUpdateProduct: (product: Omit<IProducts, 'id'>) => void;
   editingProduct: IProducts;
 }
 

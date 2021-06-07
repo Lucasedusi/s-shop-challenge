@@ -11,7 +11,6 @@ interface IProducts {
   name: string;
   price: string;
   description: string;
-  available: boolean;
 }
 
 interface ICreateProductData {
@@ -23,7 +22,7 @@ interface ICreateProductData {
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleAddProduct: (product: Omit<IProducts, 'id' | 'available'>) => void;
+  handleAddProduct: (product: Omit<IProducts, 'id'>) => void;
 }
 
 const ModalAddProduct: React.FC<IModalProps> = ({ isOpen, setIsOpen, handleAddProduct }) => {
