@@ -11,12 +11,10 @@ interface IProducts {
   name: string;
   price: string;
   description: string;
-  available: boolean;
 }
 
 interface ICreateProductData {
   name: string;
-  image: string;
   price: string;
   description: string;
 }
@@ -24,19 +22,17 @@ interface ICreateProductData {
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleAddProduct: (product: Omit<IProducts, 'id' | 'available'>) => void;
+  handleAddProduct: (product: Omit<IProducts, 'id'>) => void;
 }
 
-const ModalAddProduct: React.FC<IModalProps> = ({
-  isOpen,
-  setIsOpen,
-  handleAddProduct,
-}) => {
+const ModalAddProduct: React.FC<IModalProps> = ({ isOpen, setIsOpen, handleAddProduct }) => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
     async (data: ICreateProductData) => {
-      // TODO ADD A NEW PRODUCT AND CLOSE THE MODAL
+      handleAddProduct(data);
+
+      setIsOpen();
     },
     [handleAddProduct, setIsOpen],
   );
@@ -50,7 +46,7 @@ const ModalAddProduct: React.FC<IModalProps> = ({
 
         <Input name="description" placeholder="Descrição" />
         <button type="submit" data-testid="add-product-button">
-          <p className="text">Adicionar Prato</p>
+          <p className="text">Adicionar Produto</p>
           <div className="icon">
             <FiCheckSquare size={24} />
           </div>

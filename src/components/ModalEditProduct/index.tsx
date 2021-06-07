@@ -7,19 +7,18 @@ import { Form } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
 
-interface IProduct {
+interface IProducts {
   id: number;
   name: string;
   price: string;
   description: string;
-  available: boolean;
 }
 
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleUpdateProduct: (product: Omit<IProduct, 'id' | 'available'>) => void;
-  editingProduct: IProduct;
+  handleUpdateProduct: (product: Omit<IProducts, 'id'>) => void;
+  editingProduct: IProducts;
 }
 
 interface IEditProductData {
@@ -28,17 +27,14 @@ interface IEditProductData {
   description: string;
 }
 
-const ModalEditProduct: React.FC<IModalProps> = ({
-  isOpen,
-  setIsOpen,
-  editingProduct,
-  handleUpdateProduct,
-}) => {
+const ModalEditProduct: React.FC<IModalProps> = ({ isOpen, setIsOpen, editingProduct, handleUpdateProduct }) => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
     async (data: IEditProductData) => {
-      // EDIT A PRODUCT PLATE AND CLOSE THE MODAL
+      handleUpdateProduct(data);
+
+      setIsOpen();
     },
     [handleUpdateProduct, setIsOpen],
   );
@@ -53,7 +49,7 @@ const ModalEditProduct: React.FC<IModalProps> = ({
         <Input name="description" placeholder="Descrição" />
 
         <button type="submit" data-testid="edit-product-button">
-          <div className="text">Editar Prato</div>
+          <div className="text">Editar Produto</div>
           <div className="icon">
             <FiCheckSquare size={24} />
           </div>

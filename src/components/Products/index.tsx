@@ -1,42 +1,33 @@
 import React, { useState } from 'react';
 
+import api from '../../services/api';
+
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import { Container } from './styles';
 
-interface IProduct {
+interface IProducts {
   id: number;
   name: string;
   price: string;
   description: string;
-  available: boolean;
 }
 
 interface IProps {
-  product: IProduct;
+  product: IProducts;
   handleDelete: (id: number) => {};
-  handleEditProduct: (product: IProduct) => void;
+  handleEditProduct: (product: IProducts) => void;
 }
 
-const Product: React.FC<IProps> = ({
-  product,
-  handleDelete,
-  handleEditProduct,
-}: IProps) => {
-  const [isAvailable, setIsAvailable] = useState(product.available);
-
-  async function toggleAvailable(): Promise<void> {
-    // TODO UPDATE STATUS (available)
-  }
-
+const Product: React.FC<IProps> = ({ product, handleDelete, handleEditProduct }: IProps) => {
   function setEditingProduct(): void {
-    // TODO - SET THE ID OF THE CURRENT ITEM TO THE EDITING PRODUCT AND OPEN MODAL
+    handleEditProduct(product);
+    console.log(product);
   }
 
   return (
-    <Container available={isAvailable}>
-      <header>
-      </header>
+    <Container>
+      <header></header>
       <section className="body">
         <h2>{product.name}</h2>
         <p>{product.description}</p>
@@ -63,21 +54,6 @@ const Product: React.FC<IProps> = ({
           >
             <FiTrash size={20} />
           </button>
-        </div>
-
-        <div className="availability-container">
-          <p>{isAvailable ? 'Disponível' : 'Indisponível'}</p>
-
-          <label htmlFor={`available-switch-${product.id}`} className="switch">
-            <input
-              id={`available-switch-${product.id}`}
-              type="checkbox"
-              checked={isAvailable}
-              onChange={toggleAvailable}
-              data-testid={`change-status-product-${product.id}`}
-            />
-            <span className="slider" />
-          </label>
         </div>
       </section>
     </Container>

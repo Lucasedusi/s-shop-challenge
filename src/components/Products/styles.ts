@@ -1,27 +1,11 @@
 import styled, { css } from 'styled-components';
 
-interface IProduct {
-  available: boolean;
-}
-
-export const Container = styled.div<IProduct>`
-  background: #f0f0f5;
+export const Container = styled.div`
+  background: #fff;
   border-radius: 8px;
+  margin-top: 10px;
 
   header {
-    background: #4a6097;
-    border-radius: 8px 8px 0px 0px;
-    height: 192px;
-    overflow: hidden;
-    transition: 0.3s opacity;
-    text-align: center;
-
-    ${props =>
-      !props.available &&
-      css`
-        opacity: 0.3;
-      `};
-
     img {
       pointer-events: none;
       user-select: none;
@@ -111,7 +95,7 @@ export const Container = styled.div<IProduct>`
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: #4a6097;
+          background-color: #bb2124;
           -webkit-transition: 0.4s;
           transition: 0.4s;
           border-radius: 16px;
