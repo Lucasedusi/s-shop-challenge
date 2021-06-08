@@ -55,14 +55,16 @@ const ProductUser: React.FC = () => {
           {products &&
             products.map((product) => (
               <Products>
-                <p>{product.name}</p>
-                <p>{product.description}</p>
-                <p>{product.price}</p>
+                <p className="name">{product.name}</p>
+                <p className="description">{product.description}</p>
+                <p className="price">
+                  R$ <b>{product.price}</b>
+                </p>
                 <Footer>
                   <FooterQtn>
-                    <span>-</span>
+                    <button>-</button>
                     <input name="compras" />
-                    <span>+</span>
+                    <button>+</button>
                   </FooterQtn>
                   <Button>Comprar</Button>
                 </Footer>

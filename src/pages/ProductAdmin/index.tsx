@@ -10,7 +10,7 @@ import ModalAddProduct from '../../components/ModalAddProduct';
 import ModalEditProduct from '../../components/ModalEditProduct';
 import SideBarAdmin from '../../components/SiderBarAdmin';
 
-import { ProductsContainer, GeneralContainer } from './styles';
+import { ProductsContainer, GeneralContainer } from './styles'; 
 
 interface IProducts {
   id: number;
