@@ -13,12 +13,6 @@
       "description": "Calça Sarja, nas cores azul marinho",
       "price": "1.000",
       "available": true
-    },
-    {
-      "name": "Teste",
-      "price": "21.90",
-      "description": "testando tudo",
-      "id": 4
     }
   ]
 }
