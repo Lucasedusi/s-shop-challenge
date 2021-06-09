@@ -6,9 +6,8 @@ import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
 import Badge from '@material-ui/core/Badge';
 
-
 import SideBarUser from '../../components/SiderBarUser';
-import Header from '../../components/Header';
+import HeaderShop from '../../components/HeaderShop';
 
 import { StyledButton, ProductsContainer, GeneralContainer } from './styles';
 
@@ -74,12 +73,12 @@ const Shop: React.FC = () => {
 
   return (
     <>
-      <Header openModal={toggleModal} />
+      <HeaderShop />
+
       <GeneralContainer>
         <SideBarUser />
         <StyledButton onClick={() => setCartOpen(true)}>
-          <Badge badgeContent={getTotalItems(cartItems)} color="error">
-          </Badge>
+          <Badge badgeContent={getTotalItems(cartItems)} color="error"></Badge>
         </StyledButton>
 
         <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>

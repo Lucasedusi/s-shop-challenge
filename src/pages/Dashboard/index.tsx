@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Header from '../../components/Header';
-
 import api from '../../services/api';
 
 import Product from '../../components/Products';
@@ -11,6 +9,7 @@ import ModalEditProduct from '../../components/ModalEditProduct';
 import SideBarAdmin from '../../components/SiderBarAdmin';
 
 import { ProductsContainer, GeneralContainer } from './styles'; 
+import HeaderAdmin from '../../components/HeaderAdmin';
 
 interface IProducts {
   id: number;
@@ -85,7 +84,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <Header openModal={toggleModal} />
+      <HeaderAdmin openModal={toggleModal} />
       <ModalAddProduct isOpen={modalOpen} setIsOpen={toggleModal} handleAddProduct={handleAddProduct} />
       <ModalEditProduct
         isOpen={editModalOpen}
