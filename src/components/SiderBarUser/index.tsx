@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHome, FaShoppingCart } from 'react-icons/fa';
 
@@ -13,6 +14,8 @@ export type CartItemType = {
 };
 
 const SideBarUser: React.FC = () => {
+  const [cartOpen, setCartOpen] = useState(false);
+
   return (
     <SideBarContainer>
       <h4>Menu</h4>
@@ -21,7 +24,7 @@ const SideBarUser: React.FC = () => {
           {' '}
           <FaHome size={19} /> Home
         </Link>
-        <Link to="/">
+        <Link onClick={() => setCartOpen(true)}>
           <FaShoppingCart size={20} /> Carrinho
         </Link>
       </Content>
