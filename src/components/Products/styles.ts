@@ -1,16 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   background: #fff;
   border-radius: 8px;
-  margin-top: 10px;
-
-  header {
-    img {
-      pointer-events: none;
-      user-select: none;
-    }
-  }
 
   section.body {
     padding: 30px;
