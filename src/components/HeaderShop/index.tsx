@@ -9,12 +9,10 @@ const HeaderShop: React.FC = () => (
   <Container>
     <header>
       <img src={Logo} alt="Shop Seventh" />
-      <nav>
         <Form onSubmit={() => {}}>
           <input onChange={() => {}} placeholder="Buscar..." />
           <button type="submit">Pesquisar</button>
         </Form>
-      </nav>
     </header>
   </Container>
 );
