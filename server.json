@@ -13,6 +13,18 @@
       "description": "Calça Sarja, nas cores azul marinho",
       "price": "1.000",
       "available": true
+    },
+    {
+      "name": "Vestido",
+      "price": "21.90",
+      "description": "Vestido de frio",
+      "id": 4
+    },
+    {
+      "name": "Sapato",
+      "price": "30.90",
+      "description": "Sapato de couro",
+      "id": 5
     }
   ]
 }

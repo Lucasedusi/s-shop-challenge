@@ -38,4 +38,13 @@ export const Content = styled.div`
   display: flex;
   margin: 10px 20px;
   flex-direction: column;
+
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  svg {
+    margin-right: 7px;
+  }
 `;

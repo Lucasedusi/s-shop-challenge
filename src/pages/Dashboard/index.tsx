@@ -19,7 +19,7 @@ interface IProducts {
   description: string;
 }
 
-const ProductAdmin: React.FC = () => {
+const Dashboard: React.FC = () => {
   const [products, setProducts] = useState<IProducts[]>([]);
   const [editingProduct, setEditingProduct] = useState<IProducts>({} as IProducts);
   const [modalOpen, setModalOpen] = useState(false);
@@ -113,4 +113,4 @@ const ProductAdmin: React.FC = () => {
   );
 };
 
-export default ProductAdmin;
+export default Dashboard;
