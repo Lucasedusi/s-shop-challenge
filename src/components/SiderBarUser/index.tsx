@@ -6,9 +6,7 @@ import { SideBarContainer, Content } from './styles';
 
 export type CartItemType = {
   id: number;
-  category: string;
   description: string;
-  image: string;
   price: number;
   name: string;
   amount: number;
