@@ -22,6 +22,10 @@ export const Wrapper = styled.div`
       background-color: ${shade(0.2, '#4a6097')};
     }
   }
+
+  .icon-cart {
+    margin-right: 10px;
+  }
 `;
 
 export const Content = styled.div`

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form as Unform } from '@unform/web';
+import { shade } from 'polished';
 
 export const Form = styled(Unform)`
   padding: 48px 40px;
@@ -24,10 +25,14 @@ export const Form = styled(Unform)`
     border: 0;
     background: #39b100;
     color: #fff;
-
     display: flex;
     flex-direction: row;
     align-items: center;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: ${shade(0.2, '#39b100')};
+    }
 
     .text {
       padding: 16px 24px;

@@ -36,7 +36,7 @@ const Product: React.FC<IProps> = ({ product, handleDelete, handleEditProduct }:
         <div className="icon-container">
           <button
             type="button"
-            className="icon"
+            className="icon-edit"
             onClick={() => setEditingProduct()}
             data-testid={`edit-product-${product.id}`}
           >
@@ -45,7 +45,7 @@ const Product: React.FC<IProps> = ({ product, handleDelete, handleEditProduct }:
 
           <button
             type="button"
-            className="icon"
+            className="icon-delete"
             onClick={() => handleDelete(product.id)}
             data-testid={`remove-product-${product.id}`}
           >
