@@ -78,7 +78,8 @@ const Shop: React.FC = () => {
         }
       }, [] as CartItemType[]),
     );
-    // localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
+    cartItems?.splice(id, 1);
+    localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
   };
 
   return (
