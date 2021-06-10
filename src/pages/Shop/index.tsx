@@ -24,9 +24,9 @@ export type CartItemType = {
 
 const Shop: React.FC = () => {
   const [cartOpen, setCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([] as CartItemType[]);
-  const [products, setProducts] = useState<CartItemType[]>(() => {
-    const storageProducts = localStorage.getItem('@Shop:products');
+  const [products, setProducts] = useState<CartItemType[]>();
+  const [cartItems, setCartItems] = useState<CartItemType[]>(() => {
+    const storageProducts = localStorage.getItem('@Shop:cart');
 
     if (storageProducts) {
       return JSON.parse(storageProducts);
@@ -41,8 +41,7 @@ const Shop: React.FC = () => {
 
       setProducts(response.data);
     }
-    
-    localStorage.setItem('@Shop:products', JSON.stringify(products));
+
     loadProducts();
   }, []);
 
@@ -60,6 +59,8 @@ const Shop: React.FC = () => {
       // Primeira vez que o item é adicionado
       return [...prev, { ...clickedItem, amount: 1 }];
     });
+    
+    localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
   };
 
   const handleRemoveFromCart = (id: number) => {
@@ -73,6 +74,7 @@ const Shop: React.FC = () => {
         }
       }, [] as CartItemType[]),
     );
+    // localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
   };
 
   return (
