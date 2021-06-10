@@ -34,7 +34,7 @@ export const Search = styled.div`
 
 export const Form = styled.form`
   display: flex;
-  margin: -90px 80px 0 0;
+  margin: -95px 80px 0 0;
 
   input {
     flex: 1;
