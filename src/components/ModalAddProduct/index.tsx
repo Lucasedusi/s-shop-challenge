@@ -41,7 +41,7 @@ const ModalAddProduct: React.FC<IModalProps> = ({ isOpen, setIsOpen, handleAddPr
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit}>
         <h1>Novo Produto</h1>
-        <Input name="name" placeholder="Ex: Camisa Jeans" />
+        <Input title="Ex: Camisa Jeans" name="name" placeholder="Nome do produto" />
         <Input name="price" placeholder="Ex: 19.90" />
 
         <Input name="description" placeholder="Descrição" />

@@ -19,12 +19,6 @@
       "price": "21.90",
       "description": "Vestido de frio",
       "id": 4
-    },
-    {
-      "name": "Sapato",
-      "price": "30.90",
-      "description": "Sapato de couro",
-      "id": 5
     }
   ]
 }

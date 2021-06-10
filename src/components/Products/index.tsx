@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-
-import api from '../../services/api';
+import React from 'react';
 
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 

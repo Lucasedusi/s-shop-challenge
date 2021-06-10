@@ -41,7 +41,7 @@ const Shop: React.FC = () => {
 
       setProducts(response.data);
     }
-
+    
     localStorage.setItem('@Shop:products', JSON.stringify(products));
     loadProducts();
   }, []);
