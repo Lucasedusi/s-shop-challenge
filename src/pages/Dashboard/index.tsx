@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
-import Header from '../../components/Header';
 
 import api from '../../services/api';
 
-import Product from '../../components/Products';
-import ModalAddProduct from '../../components/ModalAddProduct';
-import ModalEditProduct from '../../components/ModalEditProduct';
-import SideBarAdmin from '../../components/SiderBarAdmin';
+import { Product, ModalAddProduct, ModalEditProduct, HeaderAdmin, SideBarAdmin } from '../../components';
 
-import { ProductsContainer, GeneralContainer } from './styles'; 
+import { ProductsContainer, GeneralContainer } from './styles';
 
 interface IProducts {
   id: number;
@@ -37,12 +31,11 @@ const Dashboard: React.FC = () => {
 
   async function handleAddProduct(product: Omit<IProducts, 'id'>): Promise<void> {
     try {
-      const response = await api.post('/products', {
-        ...product,
-      });
+      const response = await api.post('/products', product);
 
       setProducts([...products, response.data]);
     } catch (err) {
+      // swal.error(todo)
       console.log(err);
     }
   }
@@ -85,7 +78,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <Header openModal={toggleModal} />
+      <HeaderAdmin openModal={toggleModal} />
       <ModalAddProduct isOpen={modalOpen} setIsOpen={toggleModal} handleAddProduct={handleAddProduct} />
       <ModalEditProduct
         isOpen={editModalOpen}

@@ -23,6 +23,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
           <CartItem key={item.id} item={item} addToCart={addToCart} removeFromCart={removeFromCart} />
         ))}
         <h2>Total: R${calculateTotal(cartItems).toFixed(2)}</h2>
+        <button type="submit">Finalizar Comprar</button>
       </BodyCart>
     </Wrapper>
   );

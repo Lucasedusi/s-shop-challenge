@@ -2,13 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import ReactModal from 'react-modal';
 
-interface IProducts {
-  id: number;
-  name: string;
-  price: string;
-  description: string;
-}
-
 interface IModalProps {
   children: any;
   isOpen: boolean;

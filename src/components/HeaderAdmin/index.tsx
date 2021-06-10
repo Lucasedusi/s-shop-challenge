@@ -9,7 +9,7 @@ interface IHeaderProps {
   openModal: () => void;
 }
 
-const Header: React.FC<IHeaderProps> = ({ openModal }) => (
+const HeaderAdmin: React.FC<IHeaderProps> = ({ openModal }) => (
   <Container>
     <header>
       <img src={Logo} alt="Shop Seventh" />
@@ -30,4 +30,4 @@ const Header: React.FC<IHeaderProps> = ({ openModal }) => (
   </Container>
 );
 
-export default Header;
+export default HeaderAdmin;

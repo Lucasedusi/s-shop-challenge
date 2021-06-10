@@ -43,11 +43,11 @@ const ModalEditProduct: React.FC<IModalProps> = ({ isOpen, setIsOpen, editingPro
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit} initialData={editingProduct}>
         <h1>Editar Produto</h1>
-        <Input name="name" placeholder="Ex: Camisa Jeans" />
-        <Input name="price" placeholder="Ex: 19.90" />
+        <Input required name="name" placeholder="Nome do produto" />
+        <Input required name="price" placeholder="Preço" />
 
         <Input name="description" placeholder="Descrição" />
-
+        
         <button type="submit" data-testid="edit-product-button">
           <div className="text">Editar Produto</div>
           <div className="icon">

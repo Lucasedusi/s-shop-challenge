@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 
 import Item from '../../components/Item';
@@ -6,29 +7,37 @@ import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
 import Badge from '@material-ui/core/Badge';
 
+import { FiSearch } from 'react-icons/fi';
 
 import SideBarUser from '../../components/SiderBarUser';
-import Header from '../../components/Header';
+import HeaderShop from '../../components/HeaderShop';
 
-import { StyledButton, ProductsContainer, GeneralContainer } from './styles';
+import { StyledButton, ProductsContainer, GeneralContainer, Form, Search } from './styles';
 
 import api from '../../services/api';
 
 export type CartItemType = {
   id: number;
-  category: string;
   description: string;
-  image: string;
   price: number;
   name: string;
   amount: number;
+  startsWith: string;
 };
 
 const Shop: React.FC = () => {
-  const [products, setProducts] = useState<CartItemType[]>([]);
+  const [search, setSearch] = useState('');
   const [cartOpen, setCartOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([] as CartItemType[]);
+  const [products, setProducts] = useState<CartItemType[]>();
+  const [cartItems, setCartItems] = useState<CartItemType[]>(() => {
+    const storageProducts = localStorage.getItem('@Shop:cart');
+
+    if (storageProducts) {
+      return JSON.parse(storageProducts);
+    }
+
+    return [];
+  });
 
   useEffect(() => {
     async function loadProducts(): Promise<void> {
@@ -40,19 +49,22 @@ const Shop: React.FC = () => {
     loadProducts();
   }, []);
 
+  // Contagem dos itens do carrinho
   const getTotalItems = (items: CartItemType[]) => items.reduce((confirm: number, item) => confirm + item.amount, 0);
 
   const handleAddToCart = (clickedItem: CartItemType) => {
     setCartItems((prev) => {
-      // 1. Is the item already added in the cart?
+      // Verificar se o item já está adicionado ao carrinho?
       const isItemInCart = prev.find((item) => item.id === clickedItem.id);
 
       if (isItemInCart) {
         return prev.map((item) => (item.id === clickedItem.id ? { ...item, amount: item.amount + 1 } : item));
       }
-      // First time the item is added
+      // Primeira vez que o item é adicionado
       return [...prev, { ...clickedItem, amount: 1 }];
     });
+
+    localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
   };
 
   const handleRemoveFromCart = (id: number) => {
@@ -66,31 +78,46 @@ const Shop: React.FC = () => {
         }
       }, [] as CartItemType[]),
     );
+    // localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
   };
-
-  function toggleModal(): void {
-    setModalOpen(!modalOpen);
-  }
 
   return (
     <>
-      <Header openModal={toggleModal} />
+      <HeaderShop />
+
+      <Search>
+        <Form onSubmit={() => {}}>
+          <input type="text" placeholder="Buscar produto..." onChange={(event) => setSearch(event.target.value)} />
+          <button type="submit">
+            <FiSearch size={18} />
+          </button>
+        </Form>
+      </Search>
+
       <GeneralContainer>
         <SideBarUser />
         <StyledButton onClick={() => setCartOpen(true)}>
-          <Badge badgeContent={getTotalItems(cartItems)} color="error">
-          </Badge>
+          <Badge badgeContent={getTotalItems(cartItems)} color="error"></Badge>
         </StyledButton>
 
         <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
           <Cart cartItems={cartItems} addToCart={handleAddToCart} removeFromCart={handleRemoveFromCart} />
         </Drawer>
+
         <ProductsContainer>
-          {products?.map((product) => (
-            <Grid item key={product.id}>
-              <Item item={product} handleAddToCart={handleAddToCart} />
-            </Grid>
-          ))}
+          {products
+            ?.filter((product) => {
+              if (search === '') {
+                return product;
+              } else if (product.name.toLowerCase().includes(search.toLowerCase())) {
+                return product;
+              }
+            })
+            .map((product) => (
+              <Grid item key={product.id}>
+                <Item item={product} handleAddToCart={handleAddToCart} />
+              </Grid>
+            ))}
         </ProductsContainer>
       </GeneralContainer>
     </>

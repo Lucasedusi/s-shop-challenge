@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div`
   background: #fff;
@@ -41,83 +42,47 @@ export const Container = styled.div`
     div.icon-container {
       display: flex;
 
-      button {
-        background: #fff;
+      button.icon-delete {
+        background: #ff6961;
         padding: 10px;
         border-radius: 8px;
         display: flex;
         border: none;
         transition: 0.1s;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: ${shade(0.2, '#ff6961')};
+        }
 
         svg {
-          color: #3d3d4d;
+          color: #fff;
         }
 
         & + button {
           margin-left: 6px;
         }
       }
-    }
 
-    div.availability-container {
-      display: flex;
-      align-items: center;
+      button.icon-edit {
+        background: #37a44e;
+        padding: 10px;
+        border-radius: 8px;
+        display: flex;
+        border: none;
+        transition: 0.1s;
+        transition: background-color 0.2s;
 
-      p {
-        color: #3d3d4d;
-      }
-
-      .switch {
-        position: relative;
-        display: inline-block;
-        width: 88px;
-        height: 32px;
-        margin-left: 12px;
-
-        & input {
-          opacity: 0;
-          width: 0;
-          height: 0;
+        &:hover {
+          background-color: ${shade(0.2, '#37a44e')};
         }
 
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: #bb2124;
-          -webkit-transition: 0.4s;
-          transition: 0.4s;
-          border-radius: 16px;
-
-          &:before {
-            position: absolute;
-            content: '';
-            height: 20px;
-            width: 40px;
-            left: 8px;
-            bottom: 6px;
-            background-color: white;
-            -webkit-transition: 0.4s;
-            transition: 0.4s;
-            border-radius: 10px;
-          }
+        svg {
+          color: #fff;
         }
 
-        input:checked + .slider {
-          background-color: #39b100;
-        }
-
-        input:focus + .slider {
-          box-shadow: 0 0 1px #2196f3;
-        }
-
-        input:checked + .slider:before {
-          -webkit-transform: translateX(32px);
-          -ms-transform: translateX(32px);
-          transform: translateX(32px);
+        & + button {
+          margin-left: 6px;
         }
       }
     }

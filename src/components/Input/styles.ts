@@ -26,24 +26,14 @@ export const Container = styled.div<IContainerProps>`
     line-height: 36px;
   }
 
-  ${props =>
-    props.isFocused &&
-    css`
-      color: #ff9000;
-      border-color: #ff9000;
-    `}
-
-  ${props =>
-    props.isFilled &&
-    css`
-      color: #ff9000;
-    `}
-
   input {
     flex: 1;
     background: transparent;
     border: 0;
-    color: #b7b7cc;
+    color: #292929;
+    font-size: 16px;
+    font-weight: 600;
+    background: #fff;
 
     &::placeholder {
       color: #b7b7cc;

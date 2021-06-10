@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-
-import api from '../../services/api';
+import React from 'react';
 
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 
@@ -38,7 +36,7 @@ const Product: React.FC<IProps> = ({ product, handleDelete, handleEditProduct }:
         <div className="icon-container">
           <button
             type="button"
-            className="icon"
+            className="icon-edit"
             onClick={() => setEditingProduct()}
             data-testid={`edit-product-${product.id}`}
           >
@@ -47,7 +45,7 @@ const Product: React.FC<IProps> = ({ product, handleDelete, handleEditProduct }:
 
           <button
             type="button"
-            className="icon"
+            className="icon-delete"
             onClick={() => handleDelete(product.id)}
             data-testid={`remove-product-${product.id}`}
           >
