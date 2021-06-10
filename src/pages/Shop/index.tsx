@@ -7,10 +7,12 @@ import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
 import Badge from '@material-ui/core/Badge';
 
+import { FiSearch } from 'react-icons/fi';
+
 import SideBarUser from '../../components/SiderBarUser';
 import HeaderShop from '../../components/HeaderShop';
 
-import { StyledButton, ProductsContainer, GeneralContainer } from './styles';
+import { StyledButton, ProductsContainer, GeneralContainer, Form, Search } from './styles';
 
 import api from '../../services/api';
 
@@ -20,9 +22,11 @@ export type CartItemType = {
   price: number;
   name: string;
   amount: number;
+  startsWith: string;
 };
 
 const Shop: React.FC = () => {
+  const [search, setSearch] = useState('');
   const [cartOpen, setCartOpen] = useState(false);
   const [products, setProducts] = useState<CartItemType[]>();
   const [cartItems, setCartItems] = useState<CartItemType[]>(() => {
@@ -59,7 +63,7 @@ const Shop: React.FC = () => {
       // Primeira vez que o item é adicionado
       return [...prev, { ...clickedItem, amount: 1 }];
     });
-    
+
     localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
   };
 
@@ -81,6 +85,15 @@ const Shop: React.FC = () => {
     <>
       <HeaderShop />
 
+      <Search>
+        <Form onSubmit={() => {}}>
+          <input type="text" placeholder="Buscar produto..." onChange={(event) => setSearch(event.target.value)} />
+          <button type="submit">
+            <FiSearch size={18} />
+          </button>
+        </Form>
+      </Search>
+
       <GeneralContainer>
         <SideBarUser />
         <StyledButton onClick={() => setCartOpen(true)}>
@@ -90,12 +103,21 @@ const Shop: React.FC = () => {
         <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
           <Cart cartItems={cartItems} addToCart={handleAddToCart} removeFromCart={handleRemoveFromCart} />
         </Drawer>
+
         <ProductsContainer>
-          {products?.map((product) => (
-            <Grid item key={product.id}>
-              <Item item={product} handleAddToCart={handleAddToCart} />
-            </Grid>
-          ))}
+          {products
+            ?.filter((product) => {
+              if (search === '') {
+                return product;
+              } else if (product.name.toLowerCase().includes(search.toLowerCase())) {
+                return product;
+              }
+            })
+            .map((product) => (
+              <Grid item key={product.id}>
+                <Item item={product} handleAddToCart={handleAddToCart} />
+              </Grid>
+            ))}
         </ProductsContainer>
       </GeneralContainer>
     </>

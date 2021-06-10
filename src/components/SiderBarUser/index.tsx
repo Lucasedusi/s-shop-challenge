@@ -20,7 +20,7 @@ const SideBarUser: React.FC = () => {
     <SideBarContainer>
       <h4>Menu</h4>
       <Content>
-        <Link to="/product-user">
+        <Link to="/">
           {' '}
           <FaHome size={19} /> Home
         </Link>
