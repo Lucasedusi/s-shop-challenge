@@ -4,15 +4,13 @@
       "id": 1,
       "name": "Camisa Jeans Preta",
       "description": "Camisa Jeans Simples",
-      "price": "19.90",
-      "available": false
+      "price": "19.90"
     },
     {
       "id": 3,
       "name": "Cordão de ouro",
       "description": "Calça Sarja, nas cores azul marinho",
-      "price": "1.000",
-      "available": true
+      "price": "1.000"
     },
     {
       "name": "Vestido",
