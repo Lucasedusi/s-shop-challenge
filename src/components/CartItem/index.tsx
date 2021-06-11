@@ -21,6 +21,7 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
           <FiMinus size={30} />{' '}
         </ButtonLess>
         <p>{item.amount}</p>
+
         <ButtonPlus onClick={() => addToCart(item)}>
           <FiPlus size={30} />
         </ButtonPlus>

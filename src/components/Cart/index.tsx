@@ -2,6 +2,8 @@ import CartItem from '../CartItem';
 import { CartItemType } from '../../pages/Shop';
 import { Wrapper, HeaderCart, BodyCart } from './styles';
 
+import Input from '../Input';
+
 type Props = {
   cartItems: CartItemType[];
   addToCart: (clickedItem: CartItemType) => void;
@@ -23,6 +25,8 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
           <CartItem key={item.id} item={item} addToCart={addToCart} removeFromCart={removeFromCart} />
         ))}
         <h2>Total: R${calculateTotal(cartItems).toFixed(2)}</h2>
+
+        <input required name="nome" placeholder="Nome Completo" />
         <button type="submit">Finalizar Comprar</button>
       </BodyCart>
     </Wrapper>

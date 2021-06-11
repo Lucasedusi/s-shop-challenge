@@ -54,6 +54,8 @@ const Shop: React.FC = () => {
 
   const handleAddToCart = (clickedItem: CartItemType) => {
     setCartItems((prev) => {
+      localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
+
       // Verificar se o item já está adicionado ao carrinho?
       const isItemInCart = prev.find((item) => item.id === clickedItem.id);
 
@@ -63,8 +65,6 @@ const Shop: React.FC = () => {
       // Primeira vez que o item é adicionado
       return [...prev, { ...clickedItem, amount: 1 }];
     });
-
-    localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
   };
 
   const handleRemoveFromCart = (id: number) => {
@@ -78,6 +78,7 @@ const Shop: React.FC = () => {
         }
       }, [] as CartItemType[]),
     );
+
     cartItems?.splice(id, 1);
     localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
   };

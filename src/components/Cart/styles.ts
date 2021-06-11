@@ -21,6 +21,18 @@ export const BodyCart = styled.div`
   padding: 0 20px;
   flex-direction: column;
 
+  input {
+    margin: 40px 0 0 0;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 2px #04d361;
+    }
+  }
+
   h2 {
     text-align: right;
     margin: 10px 10px;
