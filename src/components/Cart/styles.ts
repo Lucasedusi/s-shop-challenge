@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
+interface stylesProps {
+  isDisabled: boolean;
+}
+
 export const Wrapper = styled.div`
   font-family: Roboto, sans-serif;
   width: 500px;
@@ -16,7 +20,7 @@ export const HeaderCart = styled.div`
   margin-bottom: 20px;
 `;
 
-export const BodyCart = styled.div`
+export const BodyCart = styled.form<stylesProps>`
   display: flex;
   padding: 0 20px;
   flex-direction: column;
@@ -41,7 +45,7 @@ export const BodyCart = styled.div`
   button {
     height: 40px;
     margin: 30px 0;
-    background-color: #4a6097;
+    background-color: ${({ isDisabled }) => (isDisabled ? '#4a6097' : '#999')};
     border-radius: 5px;
     border: 0;
     color: #fff;
@@ -51,6 +55,7 @@ export const BodyCart = styled.div`
 
     &:hover {
       background-color: ${shade(0.2, '#4a6097')};
+      background-color: ${({ isDisabled }) => !isDisabled && '#ccc'};
     }
   }
 `;

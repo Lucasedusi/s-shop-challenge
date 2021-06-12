@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react';
 
-import api from '../../services/api';
-
 import { HeaderShop } from '../../components';
 
 import { ProductsContainer, GeneralContainer } from './styles';
 
-interface IProducts {
-  id: number;
+export type SalesType = {
   name: string;
-  price: string;
-  description: string;
-}
+  totalItems: number;
+  totalPrice: number;
+};
 
 const Dashboard: React.FC = () => {
-  useEffect(() => {}, []);
+  const [sales, setSales] = useState([] as SalesType[]);
+
+  useEffect(() => {
+    async function loadSales(): Promise<void> {
+      const storageSales = localStorage.getItem('@shop:sales') || '[]';
+
+      const sales = JSON.parse(storageSales);
+      setSales(sales);
+    }
+
+    loadSales();
+  }, []);
 
   return (
     <>
@@ -23,19 +31,14 @@ const Dashboard: React.FC = () => {
       <GeneralContainer>
         <h1>Painel de compras</h1>
         <ProductsContainer data-testid="foods-list">
-          <table>
-            <tr>
-              <th>Nome do Produto</th>
-              <th>Quantidade</th>
-              <th>Total</th>
-            </tr>
-
-            <tr>
-              <td>Lucas Eduardo</td>
-              <td>4</td>
-              <td>R$ 21.90</td>
-            </tr>
-          </table>
+          {' '}
+          {sales.map((sale) => (
+            <ul key={JSON.stringify(sale)}>
+              <li>{sale.name}</li>
+              <li>{sale.totalItems}</li>
+              <li>{sale.totalPrice}</li>
+            </ul>
+          ))}
         </ProductsContainer>
       </GeneralContainer>
     </>
@@ -43,3 +46,17 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
+
+// <table>
+//             <tr>
+//               <th>{cartItems.name}</th>
+//               <th>Quantidade</th>
+//               <th>Total</th>
+//             </tr>
+
+//             <tr>
+//               <td></td>
+//               <td></td>
+//               <td></td>
+//             </tr>
+//           </table>
