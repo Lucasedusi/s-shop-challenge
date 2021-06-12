@@ -18,11 +18,10 @@ import api from '../../services/api';
 
 export type CartItemType = {
   id: number;
+  name: string;
   description: string;
   price: number;
-  name: string;
   amount: number;
-  startsWith: string;
 };
 
 const Shop: React.FC = () => {
@@ -63,9 +62,11 @@ const Shop: React.FC = () => {
       // Primeira vez que o item é adicionado
       return [...prev, { ...clickedItem, amount: 1 }];
     });
-
-    localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
   };
+
+  useEffect(() => {
+    localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const handleRemoveFromCart = (id: number) => {
     setCartItems((prev) =>
@@ -78,8 +79,6 @@ const Shop: React.FC = () => {
         }
       }, [] as CartItemType[]),
     );
-    cartItems?.splice(id, 1);
-    localStorage.setItem('@Shop:cart', JSON.stringify(cartItems));
   };
 
   return (
@@ -102,7 +101,13 @@ const Shop: React.FC = () => {
         </StyledButton>
 
         <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-          <Cart cartItems={cartItems} addToCart={handleAddToCart} removeFromCart={handleRemoveFromCart} />
+          <Cart
+            setCartOpen={setCartOpen}
+            setCartItems={setCartItems}
+            cartItems={cartItems}
+            addToCart={handleAddToCart}
+            removeFromCart={handleRemoveFromCart}
+          />
         </Drawer>
 
         <ProductsContainer>
