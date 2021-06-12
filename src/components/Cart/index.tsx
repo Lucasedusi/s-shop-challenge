@@ -36,7 +36,7 @@ const Cart: React.FC<Props> = ({ setCartOpen, setCartItems, cartItems, addToCart
     e.preventDefault();
 
     const totalItems = cartItems.reduce((confirm: number, item) => confirm + item.amount, 0);
-    const totalPrice = calculateTotal(cartItems);
+    const totalPrice = calculateTotal(cartItems).toFixed(2);
     const sale = { name, totalItems, totalPrice };
 
     addSales(sale);
@@ -60,7 +60,7 @@ const Cart: React.FC<Props> = ({ setCartOpen, setCartItems, cartItems, addToCart
 
         <input
           required
-          name="nome"
+          name="name"
           placeholder="Nome Completo"
           value={name}
           onChange={(e) => setName(e.target.value)}

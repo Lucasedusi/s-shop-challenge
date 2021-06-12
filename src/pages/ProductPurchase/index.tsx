@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-import { HeaderShop } from '../../components';
+import { HeaderShop, SideBarAdmin } from '../../components';
+import { FiSearch } from 'react-icons/fi';
 
-import { ProductsContainer, GeneralContainer } from './styles';
+import { ProductsContainer, GeneralContainer, Form, Search } from './styles';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs/Breadcrumbs';
+import { Link } from 'react-router-dom';
 
 export type SalesType = {
   name: string;
@@ -10,7 +13,8 @@ export type SalesType = {
   totalPrice: number;
 };
 
-const Dashboard: React.FC = () => {
+const ProductPurchase: React.FC = () => {
+  const [search, setSearch] = useState('');
   const [sales, setSales] = useState([] as SalesType[]);
 
   useEffect(() => {
@@ -29,34 +33,49 @@ const Dashboard: React.FC = () => {
       <HeaderShop />
 
       <GeneralContainer>
-        <h1>Painel de compras</h1>
+        <SideBarAdmin />
         <ProductsContainer data-testid="foods-list">
-          {' '}
-          {sales.map((sale) => (
-            <ul key={JSON.stringify(sale)}>
-              <li>{sale.name}</li>
-              <li>{sale.totalItems}</li>
-              <li>{sale.totalPrice}</li>
-            </ul>
-          ))}
+          <Search>
+            <h1>Compras</h1>
+            <Form onSubmit={() => {}}>
+              <input type="text" placeholder="Buscar compras..." onChange={(event) => setSearch(event.target.value)} />
+              <button type="submit">
+                <FiSearch size={18} />
+              </button>
+            </Form>
+          </Search>
+          <Breadcrumbs className="breadcrubs">
+            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/purchase">Compras</Link>
+          </Breadcrumbs>
+          <table>
+            <tr>
+              <th>Nome</th>
+              <th>Quantidade</th>
+              <th>Total</th>
+            </tr>
+          </table>
+          {sales
+            .filter((sale) => {
+              if (search === '') {
+                return sale;
+              } else if (sale.name.toLowerCase().includes(search.toLowerCase())) {
+                return sale;
+              }
+            })
+            .map((sale) => (
+              <table>
+                <tr>
+                  <td width="33%">{sale.name}</td>
+                  <td width="33%">{sale.totalItems}</td>
+                  <td width="33%">R$ {sale.totalPrice}</td>
+                </tr>
+              </table>
+            ))}
         </ProductsContainer>
       </GeneralContainer>
     </>
   );
 };
 
-export default Dashboard;
-
-// <table>
-//             <tr>
-//               <th>{cartItems.name}</th>
-//               <th>Quantidade</th>
-//               <th>Total</th>
-//             </tr>
-
-//             <tr>
-//               <td></td>
-//               <td></td>
-//               <td></td>
-//             </tr>
-//           </table>
+export default ProductPurchase;
