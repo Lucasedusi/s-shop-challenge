@@ -9,7 +9,7 @@ import { ProductsContainer, GeneralContainer } from './styles';
 interface IProducts {
   id: number;
   name: string;
-  price: string;
+  price: number;
   description: string;
 }
 
