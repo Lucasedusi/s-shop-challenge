@@ -24,7 +24,7 @@ const SideBarUser: React.FC = () => {
           {' '}
           <FaHome size={19} /> Home
         </Link>
-        <Link onClick={() => setCartOpen(true)}>
+        <Link to="/" onClick={() => setCartOpen(true)}>
           <FaShoppingCart size={20} /> Carrinho
         </Link>
       </Content>

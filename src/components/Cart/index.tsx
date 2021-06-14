@@ -1,3 +1,4 @@
+/* eslint-disable no-self-assign */
 import { useState, useEffect } from 'react';
 import CartItem from '../CartItem';
 import { CartItemType } from '../../pages/Shop';
@@ -57,7 +58,6 @@ const Cart: React.FC<Props> = ({ setCartOpen, setCartItems, cartItems, addToCart
           <CartItem key={item.id} item={item} addToCart={addToCart} removeFromCart={removeFromCart} />
         ))}
         <h2>Total: R${calculateTotal(cartItems).toFixed(2)}</h2>
-
         <input
           required
           name="name"
