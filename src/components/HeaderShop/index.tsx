@@ -1,7 +1,6 @@
 import React from 'react';
 
-// import { FiMail } from 'react-icons/fi';
-import { Container, Form } from './styles';
+import { Container } from './styles';
 
 import Logo from '../../assets/logo.png';
 

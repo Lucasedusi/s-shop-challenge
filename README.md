@@ -19,7 +19,7 @@ Este comando executará uma FAKE API, onde estarão contidos os produtos cadastr
 Este comando executará a aplicação em modo de desenvolvimento.
 Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo no navegador.
 
-### `Rotas`
+### Rotas
 
 Na rota raiz http://localhost:3000/ funcionará com tela inicial para o usuário efetuar suas respectivas compras.
 

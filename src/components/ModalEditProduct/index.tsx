@@ -11,7 +11,7 @@ import Input from '../Input';
 interface IProducts {
   id: number;
   name: string;
-  price: string;
+  price: number;
   description: string;
 }
 
@@ -24,7 +24,7 @@ interface IModalProps {
 
 interface IEditProductData {
   name: string;
-  price: string;
+  price: number;
   description: string;
 }
 

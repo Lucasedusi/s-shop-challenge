@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react';
 
 import { HeaderShop, SideBarAdmin } from '../../components';
@@ -68,7 +69,7 @@ const ProductPurchase: React.FC = () => {
                 <tr>
                   <td width="33%">{sale.name}</td>
                   <td width="33%">{sale.totalItems}</td>
-                  <td width="33%">R$ {sale.totalPrice}</td>
+                  <td width="33%">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(sale.totalPrice)}</td>
                 </tr>
               </table>
             ))}

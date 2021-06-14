@@ -7,7 +7,7 @@ import { Container } from './styles';
 interface IProducts {
   id: number;
   name: string;
-  price: string;
+  price: number;
   description: string;
 }
 
@@ -29,7 +29,7 @@ const Product: React.FC<IProps> = ({ product, handleDelete, handleEditProduct }:
         <h2>{product.name}</h2>
         <p>{product.description}</p>
         <p className="price">
-          R$ <b>{product.price}</b>
+          <b>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}</b>
         </p>
       </section>
       <section className="footer">

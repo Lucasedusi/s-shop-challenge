@@ -9,13 +9,13 @@ import Input from '../Input';
 interface IProducts {
   id: number;
   name: string;
-  price: string;
+  price: number;
   description: string;
 }
 
 interface ICreateProductData {
   name: string;
-  price: string;
+  price: number;
   description: string;
 }
 
@@ -27,6 +27,12 @@ interface IModalProps {
 
 const ModalAddProduct: React.FC<IModalProps> = ({ isOpen, setIsOpen, handleAddProduct }) => {
   const formRef = useRef<FormHandles>(null);
+
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+  });
 
   const handleSubmit = useCallback(
     async (data: ICreateProductData) => {
