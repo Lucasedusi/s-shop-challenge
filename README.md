@@ -12,7 +12,7 @@ Este comanda fará a instalação de todas as dependências do projeto. Em segui
 
 ### `json-server server.json -p 3333`
 
-Este comando executará uma FAKE API, onde estarão contidos os produtos cadastrados.
+Este comando executará uma FAKE API, onde estarão contidos os produtos cadastrados. Em seguida execute:
 
 ### `yarn start`
 
