@@ -8,9 +8,7 @@ No diretório do projeto, você pode executar:
 
 ### `yarn install`
 
-Este comanda fará a instalação de todas as dependências do projeto.
-
-Em seguida
+Este comanda fará a instalação de todas as dependências do projeto. Em seguida execute:
 
 ### `json-server server.json -p 3333`
 
