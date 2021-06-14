@@ -10,7 +10,9 @@ No diretório do projeto, você pode executar:
 
 Este comanda fará a instalação de todas as dependências do projeto.
 
-### json-server server.json -p 3333
+Em seguida
+
+### `json-server server.json -p 3333`
 
 Este comando executará uma FAKE API, onde estarão contidos os produtos cadastrados.
 
