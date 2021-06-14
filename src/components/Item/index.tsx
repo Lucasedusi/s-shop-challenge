@@ -3,7 +3,7 @@ import { CartItemType } from '../../pages/Shop';
 import { Wrapper, Content } from './styles';
 import { FaShoppingCart } from 'react-icons/fa';
 
-type Props = {
+interface Props {
   item: CartItemType;
   handleAddToCart: (clickedItem: CartItemType) => void;
 };

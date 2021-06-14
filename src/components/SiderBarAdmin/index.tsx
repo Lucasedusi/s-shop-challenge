@@ -8,7 +8,7 @@ const SideBarAdmin: React.FC = () => {
     <SideBarContainer>
       <h4>Dashboard</h4>
       <Content>
-        <Link to="/">Produtos</Link>
+        <Link to="/dashboard">Produtos</Link>
         <Link to="/purchase">Compras</Link>
       </Content>
     </SideBarContainer>

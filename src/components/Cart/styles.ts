@@ -26,7 +26,7 @@ export const BodyCart = styled.form<stylesProps>`
   flex-direction: column;
 
   input {
-    margin: 40px 0 0 0;
+    margin: 40px 0 10px 0;
     height: 40px;
     border-radius: 5px;
     padding: 10px;
