@@ -4,21 +4,21 @@ import CartItem from '../CartItem';
 import { CartItemType } from '../../pages/Shop';
 import { Wrapper, HeaderCart, BodyCart } from './styles';
 
-type Props = {
+interface Props {
   setCartOpen: (isOpen: boolean) => void;
   setCartItems: (cartItems: CartItemType[]) => void;
   cartItems: CartItemType[];
   addToCart: (clickedItem: CartItemType) => void;
   removeFromCart: (id: number) => void;
-};
+}
 
 const Cart: React.FC<Props> = ({ setCartOpen, setCartItems, cartItems, addToCart, removeFromCart }) => {
-  const [valid, setValid] = useState(false);
+  const [inputValid, setInputValid] = useState(false);
   const [name, setName] = useState('');
 
   useEffect(() => {
-    name && setValid(true);
-    !name && setValid(false);
+    name && setInputValid(true);
+    !name && setInputValid(false);
   }, [name]);
 
   const calculateTotal = (items: CartItemType[]) =>
@@ -52,7 +52,7 @@ const Cart: React.FC<Props> = ({ setCartOpen, setCartItems, cartItems, addToCart
       <HeaderCart>
         <h2>Carrinho</h2>
       </HeaderCart>
-      <BodyCart onSubmit={handleSubmit} isDisabled={valid}>
+      <BodyCart onSubmit={handleSubmit} isDisabled={inputValid}>
         {cartItems.length === 0 ? <p>Nenhum item no carrinho</p> : null}
         {cartItems.map((item) => (
           <CartItem key={item.id} item={item} addToCart={addToCart} removeFromCart={removeFromCart} />
@@ -65,8 +65,8 @@ const Cart: React.FC<Props> = ({ setCartOpen, setCartItems, cartItems, addToCart
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <button type="submit" disabled={!valid}>
-          {!valid ? 'Digite seu nome' : 'Finalizar Comprar'}
+        <button type="submit" disabled={!inputValid}>
+          {!inputValid ? 'Digite seu nome' : 'Finalizar Comprar'}
         </button>
       </BodyCart>
     </Wrapper>

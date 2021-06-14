@@ -5,17 +5,7 @@ import { FaHome, FaShoppingCart } from 'react-icons/fa';
 
 import { SideBarContainer, Content } from './styles';
 
-export type CartItemType = {
-  id: number;
-  description: string;
-  price: number;
-  name: string;
-  amount: number;
-};
-
 const SideBarUser: React.FC = () => {
-  const [cartOpen, setCartOpen] = useState(false);
-
   return (
     <SideBarContainer>
       <h4>Menu</h4>
@@ -24,7 +14,7 @@ const SideBarUser: React.FC = () => {
           {' '}
           <FaHome size={19} /> Home
         </Link>
-        <Link to="/" onClick={() => setCartOpen(true)}>
+        <Link to="/">
           <FaShoppingCart size={20} /> Carrinho
         </Link>
       </Content>

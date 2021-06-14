@@ -7,11 +7,11 @@ import { ProductsContainer, GeneralContainer, Form, Search } from './styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs/Breadcrumbs';
 import { Link } from 'react-router-dom';
 
-export type SalesType = {
+interface SalesType {
   name: string;
   totalItems: number;
   totalPrice: number;
-};
+}
 
 const ProductPurchase: React.FC = () => {
   const [search, setSearch] = useState('');

@@ -2,11 +2,11 @@ import { CartItemType } from '../../pages/Shop';
 import { Wrapper, Content, CartInformation, CartButtons, ButtonLess, ButtonPlus } from './styles';
 import { FiMinus, FiPlus } from 'react-icons/fi';
 
-type Props = {
+interface Props {
   item: CartItemType;
   addToCart: (clickedItem: CartItemType) => void;
   removeFromCart: (id: number) => void;
-};
+}
 
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
   <Wrapper>
