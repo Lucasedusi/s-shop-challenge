@@ -28,12 +28,6 @@ interface IModalProps {
 const ModalAddProduct: React.FC<IModalProps> = ({ isOpen, setIsOpen, handleAddProduct }) => {
   const formRef = useRef<FormHandles>(null);
 
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-  });
-
   const handleSubmit = useCallback(
     async (data: ICreateProductData) => {
       handleAddProduct(data);
