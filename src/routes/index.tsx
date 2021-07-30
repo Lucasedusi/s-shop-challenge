@@ -9,10 +9,10 @@ import Shop from '../pages/Shop';
 const Routes: React.FC = () => {
   return (
     <Switch>
-      <Route path="/dashboard" exact component={Dashboard} />
+      <Route path="/" exact component={Dashboard} />
       <Route path="/purchase" component={ProductPurchase} />
 
-      <Route path="/" component={Shop} />
+      <Route path="/shop" component={Shop} />
     </Switch>
   );
 };
